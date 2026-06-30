@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Richy — Self Development & Positivity</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>" />
+
+  <meta name="description" content="Richy by Ricardo — Self development, self-love, and positivity. Real talk to help you grow and become the best version of yourself." />
+  <meta name="keywords" content="self development, self improvement, positivity, mental health, self love, Ricardo, Richy, personal growth" />
+  <meta name="author" content="Ricardo — Richy" />
+
+  <meta property="og:title" content="Richy — Self Development & Positivity" />
+  <meta property="og:description" content="Real talk to help you grow, love yourself, and make the world a better place. Join the community." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://richiericardoo.netlify.app" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Richy — Self Development & Positivity" />
+  <meta name="twitter:description" content="Real talk to help you grow and become the best version of yourself." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --sun: #FF9A3C; --sun-light: #FFF3E8; --sun-dark: #C96F10;
+      --sage: #2D6A4F; --sage-light: #D8F3DC; --sage-dark: #1B4332;
+      --sky: #74C69D;
+      --cream: #FAFFF7; --ink: #1C2B1E; --ink-muted: #4A6855; --ink-soft: #7A9A82;
+      --card-bg: #FFFFFF; --border: #C8E6C9; --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Nunito', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.7; opacity: 0; transition: opacity 0.5s ease; }
+    body.loaded { opacity: 1; }
+
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(250,255,247,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; gap: 1rem; }
+    .nav-logo { font-size: 1.25rem; font-weight: 800; color: var(--ink); text-decoration: none; display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 36px; height: 36px; background: var(--sage); border-radius: 50% 0 50% 0; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links a { text-decoration: none; color: var(--ink-muted); font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--sage); }
+    .nav-links a.nav-active { color: var(--sage); }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .dark-toggle { background: none; border: 1.5px solid var(--border); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; color: var(--ink); }
+    .dark-toggle:hover { border-color: var(--sun); background: var(--sun-light); }
+    .nav-socials { display: flex; gap: 0.6rem; }
+    .nav-social-btn { width: 32px; height: 32px; border-radius: 50%; background: var(--sage-light); display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--sage-dark); font-size: 0.75rem; font-weight: 800; transition: background 0.2s, color 0.2s; border: 1px solid var(--border); }
+    .nav-social-btn:hover { background: var(--sage); color: white; border-color: var(--sage); }
+    .nav-cta { background: var(--sun); color: white; border: none; padding: 10px 20px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.9rem; cursor: pointer; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--sun-dark); }
+
+    .hero-wrapper { background: linear-gradient(135deg, #fafff7 60%, #d8f3dc 100%); position: relative; overflow: hidden; }
+    .hero { display: flex; align-items: center; justify-content: space-between; gap: 3rem; max-width: 1100px; margin: 0 auto; padding: 5rem 2rem 4rem; position: relative; z-index: 1; }
+    .hero-text { flex: 1; }
+    .hero-badge { display: inline-block; background: var(--sage-light); color: var(--sage-dark); font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 6px 14px; border-radius: 50px; margin-bottom: 1.25rem; border: 1px solid rgba(45,106,79,0.2); }
+    h1 { font-family: 'Lora', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 600; line-height: 1.2; color: var(--ink); margin-bottom: 1.25rem; }
+    h1 em { font-style: italic; color: var(--sun-dark); }
+    .hero-desc { font-size: 1.05rem; color: var(--ink-muted); max-width: 480px; margin-bottom: 2rem; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+    .btn-primary { background: var(--sun); color: white; text-decoration: none; padding: 14px 28px; border-radius: 50px; font-weight: 700; font-size: 1rem; display: inline-flex; align-items: center; gap: 8px; transition: background 0.2s, transform 0.15s; }
+    .btn-primary:hover { background: var(--sun-dark); transform: scale(1.03); }
+    .btn-secondary { color: var(--ink-muted); text-decoration: none; font-weight: 700; font-size: 1rem; transition: color 0.2s; }
+    .btn-secondary:hover { color: var(--ink); }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--ink); }
+    .stat-label { font-size: 0.82rem; color: var(--ink-soft); font-weight: 600; }
+    .hero-visual { flex: 0 0 400px; }
+    .featured-video-card { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-shadow: 0 8px 32px rgba(27,67,50,0.08); }
+    .video-thumb { width: 100%; aspect-ratio: 16/9; background: #1B4332; display: flex; align-items: center; justify-content: center; position: relative; cursor: pointer; overflow: hidden; }
+    .thumb-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 1; }
+    .video-thumb:hover .thumb-overlay { background: rgba(0,0,0,0.15); }
+    .play-btn { width: 56px; height: 56px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.3); transition: transform 0.2s; z-index: 3; }
+    .video-thumb:hover .play-btn { transform: scale(1.1); }
+    .play-btn svg { width: 20px; height: 20px; fill: var(--sun-dark); margin-left: 3px; }
+    .thumb-label { position: absolute; top: 12px; left: 12px; background: var(--sun); color: white; font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 50px; z-index: 2; }
+    .video-meta { padding: 1rem 1.25rem; }
+    .video-meta h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .video-meta p { font-size: 0.85rem; color: var(--ink-soft); }
+    .active-bar { padding: 0.6rem 1.25rem; background: var(--sage-light); display: flex; align-items: center; gap: 8px; font-size: 0.82rem; font-weight: 700; color: var(--sage-dark); }
+    .pulse-dot { width: 8px; height: 8px; background: var(--sage); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; flex-shrink: 0; }
+    @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
+
+    .start-here { background: var(--sage-dark); color: white; padding: 3rem 2rem; }
+    .start-here-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 3rem; align-items: center; }
+    .start-here-text { flex: 1; }
+    .start-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--sky); margin-bottom: 0.5rem; }
+    .start-here h2 { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 600; color: white; margin-bottom: 0.75rem; line-height: 1.3; }
+    .start-here p { color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 420px; margin-bottom: 1.5rem; }
+    .start-card { flex: 0 0 340px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); overflow: hidden; text-decoration: none; transition: transform 0.2s; display: block; }
+    .start-card:hover { transform: translateY(-4px); }
+    .start-thumb { aspect-ratio: 16/9; background: #1B4332; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+    .start-play { width: 44px; height: 44px; background: var(--sun); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(255,154,60,0.4); z-index: 2; }
+    .start-play svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
+    .start-body { padding: 1rem 1.1rem; }
+    .start-body p { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sun); margin-bottom: 4px; }
+    .start-body h3 { font-size: 0.95rem; font-weight: 700; color: white; line-height: 1.4; }
+
+    .quote-banner { background: var(--sun); padding: 2.5rem 2rem; text-align: center; }
+    .quote-banner blockquote { font-family: 'Lora', serif; font-size: clamp(1.3rem, 3vw, 1.9rem); font-style: italic; font-weight: 600; color: white; max-width: 700px; margin: 0 auto; line-height: 1.4; }
+    .quote-banner cite { display: block; margin-top: 0.75rem; font-family: 'Nunito', sans-serif; font-style: normal; font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.75); letter-spacing: 0.05em; text-transform: uppercase; }
+
+    section { padding: 4rem 2rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-tag { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--sage); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Lora', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; }
+    .section-sub { font-size: 1rem; color: var(--ink-muted); max-width: 520px; margin-bottom: 2.5rem; }
+
+    .topics-section { background: var(--sage-light); }
+    .topics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
+    .topic-card { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 1.5rem; transition: transform 0.2s; cursor: default; }
+    .topic-card:hover { transform: translateY(-4px); }
+    .topic-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .topic-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .topic-card p { font-size: 0.85rem; color: var(--ink-muted); }
+
+    .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .video-card { background: var(--card-bg); border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; display: block; position: relative; }
+    .video-card:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(27,67,50,0.12); }
+    .vc-thumb { aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; cursor: pointer; position: relative; overflow: hidden; }
+    .vc-play { width: 40px; height: 40px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 12px rgba(0,0,0,0.25); z-index: 2; transition: transform 0.2s; }
+    .video-card:hover .vc-play { transform: scale(1.12); }
+    .vc-play svg { width: 14px; height: 14px; fill: var(--sun-dark); margin-left: 2px; }
+    .watch-now { position: absolute; inset: 0; background: rgba(27,67,50,0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s; font-weight: 800; color: white; font-size: 1rem; letter-spacing: 0.02em; z-index: 3; }
+    .video-card:hover .watch-now { opacity: 1; }
+    .vc-body { padding: 1rem 1.25rem 1.25rem; }
+    .vc-category { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sage); margin-bottom: 6px; }
+    .vc-title { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
+    .vc-meta { font-size: 0.82rem; color: var(--ink-soft); display: flex; gap: 12px; }
+    .yt-btn { margin-top: 2.5rem; text-align: center; }
+
+    .about-section { background: #EDF7EE; }
+    .about-inner { display: flex; gap: 4rem; align-items: center; }
+    .about-avatar { flex: 0 0 260px; text-align: center; }
+    .avatar-circle { width: 200px; height: 200px; border-radius: 50% 0 50% 0; background: linear-gradient(135deg, #D8F3DC, #52B788); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; font-size: 4rem; border: 5px solid white; box-shadow: 0 8px 24px rgba(45,106,79,0.2); overflow: hidden; }
+    .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .avatar-name { font-size: 1.2rem; font-weight: 800; color: var(--ink); }
+    .avatar-title { font-size: 0.9rem; color: var(--ink-muted); }
+    .about-text h2 { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; color: var(--ink); margin-bottom: 1rem; }
+    .about-text p { color: var(--ink-muted); margin-bottom: 1rem; font-size: 1rem; }
+    .values-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin: 1.5rem 0; }
+    .values-list li { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+    .check { width: 22px; height: 22px; background: var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 2px 8px rgba(45,106,79,0.2); }
+    .check svg { width: 12px; height: 12px; stroke: white; fill: none; stroke-width: 2.5; }
+
+    .community-section { background: var(--cream); padding: 4rem 2rem; }
+    .community-tabs { display: flex; gap: 0.75rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .tab-btn { padding: 10px 20px; border-radius: 50px; border: 2px solid var(--border); background: white; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.88rem; cursor: pointer; transition: all 0.2s; color: var(--ink-muted); }
+    .tab-btn.active { background: var(--sage); color: white; border-color: var(--sage); }
+    .tab-btn:hover:not(.active) { border-color: var(--sage); color: var(--sage-dark); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+    .community-form { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 2rem; box-shadow: 0 4px 20px rgba(27,67,50,0.06); max-width: 680px; }
+    .community-form label { display: block; font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 8px; }
+    .community-form input[type="text"], .community-form textarea, .community-form select { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 12px; font-family: 'Nunito', sans-serif; font-size: 0.95rem; color: var(--ink); background: var(--cream); transition: border-color 0.2s; outline: none; resize: vertical; margin-bottom: 1.25rem; }
+    .community-form input:focus, .community-form textarea:focus, .community-form select:focus { border-color: var(--sage); background: white; }
+    .community-form textarea { min-height: 130px; }
+    .community-form select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23A9997F' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+    .char-count { font-size: 0.78rem; color: var(--ink-soft); text-align: right; margin-top: -1rem; margin-bottom: 1.25rem; }
+    .submit-btn { background: var(--sun); color: white; border: none; padding: 13px 28px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+    .submit-btn:hover { background: var(--sun-dark); transform: scale(1.03); }
+    .success-msg { display: none; background: var(--sage-light); border: 1.5px solid var(--sage); border-radius: 12px; padding: 1rem 1.25rem; margin-top: 1rem; color: var(--sage-dark); font-weight: 700; font-size: 0.95rem; }
+    .form-note { font-size: 0.82rem; color: var(--ink-soft); margin-top: 0.75rem; }
+
+    .newsletter-section { background: var(--sage-dark); color: white; text-align: center; padding: 4rem 2rem; }
+    .newsletter-section .section-tag { color: var(--sun); }
+    .newsletter-section .section-title { color: white; }
+    .newsletter-section .section-sub { color: rgba(255,255,255,0.6); margin: 0 auto 2rem; }
+    .newsletter-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-form input[type="email"] { flex: 1; min-width: 220px; padding: 14px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2); font-family: 'Nunito', sans-serif; font-size: 0.95rem; outline: none; background: rgba(255,255,255,0.1); color: white; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.4); }
+    .newsletter-form button { background: var(--sun); color: white; border: none; padding: 14px 28px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; }
+    .newsletter-form button:hover { background: var(--sun-dark); }
+    .nl-note { margin-top: 1rem; font-size: 0.82rem; color: rgba(255,255,255,0.35); }
+
+    footer { background: var(--sage-dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-brand { color: white; font-weight: 700; font-size: 1rem; }
+    .footer-copy { color: rgba(255,255,255,0.3); font-size: 0.8rem; margin-top: 2px; }
+    .social-links { display: flex; gap: 0.75rem; }
+    .social-links a { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.07); display: flex; align-items: center; justify-content: center; text-decoration: none; color: rgba(255,255,255,0.55); font-weight: 700; font-size: 0.78rem; transition: background 0.2s, color 0.2s; border: 1px solid rgba(255,255,255,0.1); }
+    .social-links a:hover { background: var(--sun); color: white; border-color: var(--sun); }
+
+    .back-to-top { position: fixed; bottom: 2rem; right: 2rem; width: 44px; height: 44px; background: var(--sun); color: white; border: none; border-radius: 50%; font-size: 1.2rem; cursor: pointer; box-shadow: 0 4px 16px rgba(201,111,16,0.35); opacity: 0; transform: translateY(12px); transition: opacity 0.3s, transform 0.3s, background 0.2s; z-index: 999; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .back-to-top.visible { opacity: 1; transform: translateY(0); }
+    .back-to-top:hover { background: var(--sun-dark); }
+
+    .cookie-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--sage-dark); color: rgba(255,255,255,0.8); font-size: 0.82rem; padding: 0.9rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; z-index: 9999; flex-wrap: wrap; transform: translateY(100%); transition: transform 0.4s ease; }
+    .cookie-bar.visible { transform: translateY(0); }
+    .cookie-bar p { margin: 0; }
+    .cookie-bar span { color: var(--sun); font-weight: 700; }
+    .cookie-dismiss { background: var(--sun); color: white; border: none; padding: 7px 16px; border-radius: 50px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 0.82rem; cursor: pointer; white-space: nowrap; transition: background 0.2s; }
+    .cookie-dismiss:hover { background: var(--sun-dark); }
+
+    body.dark { --cream: #071a0e; --ink: #e0f0e4; --ink-muted: #7aaa88; --ink-soft: #4a7a58; --card-bg: #0f2018; --border: #1a3828; --sun-light: #2a1f10; --sage-light: #0a1f12; }
+    body.dark nav { background: rgba(7,26,14,0.95); }
+    body.dark .topic-card, body.dark .community-form { background: #0f2018; }
+    body.dark .tab-btn { background: #0f2018; color: var(--ink-muted); }
+    body.dark .community-form input, body.dark .community-form textarea, body.dark .community-form select { background: #071a0e; color: var(--ink); border-color: #1a3828; }
+    body.dark .hero-wrapper { background: linear-gradient(135deg, #071a0e 60%, #0a1f12 100%); }
+    body.dark .quote-banner { background: #C96F10; }
+    body.dark footer { background: #04100a; }
+
+    .confetti-piece { position: fixed; width: 10px; height: 10px; border-radius: 2px; pointer-events: none; z-index: 99999; animation: confetti-fall linear forwards; }
+    @keyframes confetti-fall { 0% { transform: translateY(-20px) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+
+    .skeleton-card { pointer-events: none; }
+    .skeleton-thumb { aspect-ratio: 16/9; background: linear-gradient(90deg, #d8f3dc 25%, #b7e4c7 50%, #d8f3dc 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+    .skeleton-line { height: 14px; border-radius: 6px; background: linear-gradient(90deg, #d8f3dc 25%, #b7e4c7 50%, #d8f3dc 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; margin-bottom: 10px; }
+    .skeleton-line.short { width: 40%; height: 11px; }
+    .skeleton-line.xshort { width: 60%; height: 11px; }
+    @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; padding: 3rem 1.5rem 2.5rem; }
+      .hero-visual { flex: unset; width: 100%; }
+      .about-inner { flex-direction: column; gap: 2rem; }
+      .about-avatar { flex: unset; }
+      nav { padding: 0 1rem; }
+      .nav-links { display: none; }
+      .start-here-inner { flex-direction: column; }
+      .start-card { flex: unset; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="nav-logo">
+      <span class="logo-icon">🌿</span>
+      Richy
+    </a>
+    <ul class="nav-links">
+      <li><a href="#start-here">Start Here</a></li>
+      <li><a href="#videos">Videos</a></li>
+      <li><a href="#topics">Topics</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="dark-toggle" onclick="toggleDark()" id="darkBtn" title="Toggle dark mode">🌙</button>
+      <div class="nav-socials">
+        <a href="https://www.instagram.com/richiericardoo" target="_blank" class="nav-social-btn" title="Instagram">IG</a>
+        <a href="https://www.tiktok.com/@richiericardoo" target="_blank" class="nav-social-btn" title="TikTok">TT</a>
+        <a href="https://www.twitch.tv/r1ch1y" target="_blank" class="nav-social-btn" title="Twitch">Tw</a>
+      </div>
+      <a href="https://www.youtube.com/@richiey" target="_blank" class="nav-cta">Subscribe ▶</a>
+    </div>
+  </nav>
+
+  <div class="hero-wrapper">
+  <div class="hero">
+    <div class="hero-text">
+      <span class="hero-badge">🌿 New videos every week</span>
+      <h1>Let's grow into the <em>best version</em> of ourselves</h1>
+      <p class="hero-desc">Self-development, self-improvement, and positivity — real talk to help you grow, love yourself, and make the world a better place. 🌍</p>
+      <div class="hero-actions">
+        <a href="https://www.youtube.com/@richiey" target="_blank" class="btn-primary">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.6 5 12 5 12 5s-4.6 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.2.9 1.6.1 6.8.2 6.8.2s4.6 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM10 14.5v-5.5l5.5 2.8L10 14.5z"/></svg>
+          Watch on YouTube
+        </a>
+        <a href="#about" class="btn-secondary">My story →</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num" id="video-count">Growing</div><div class="stat-label">Videos & counting 🌱</div></div>
+        <div><div class="stat-num">Weekly</div><div class="stat-label">New content</div></div>
+        <div><div class="stat-num">🌍</div><div class="stat-label">Spreading positivity</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="featured-video-card">
+        <div class="video-thumb" id="hero-thumb" onclick="window.open('https://youtu.be/Fqb57wt4t-U','_blank')" style="cursor:pointer;">
+          <img id="hero-thumb-img" src="https://img.youtube.com/vi/Fqb57wt4t-U/mqdefault.jpg" alt="Latest video" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+          <span class="thumb-label">🔴 Latest</span>
+          <div class="thumb-overlay"></div>
+          <div class="play-btn">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+        <div class="video-meta">
+          <h3 id="hero-title">Your Life Is What You Think It Is</h3>
+          <p id="hero-meta">Latest · 1 day ago</p>
+        </div>
+        <div class="active-bar">
+          <span class="pulse-dot"></span>
+          New video every week — never miss one
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="start-here" id="start-here">
+    <div class="start-here-inner">
+      <div class="start-here-text">
+        <p class="start-tag">👋 New here?</p>
+        <h2>Not sure where to start?<br>Watch this first.</h2>
+        <p>If you're new to the channel, this is the best place to begin. It'll give you a feel for what Richy is all about and why this community exists.</p>
+        <a href="https://youtu.be/2IzbH_hvOjk" target="_blank" class="btn-primary">Watch the intro video →</a>
+      </div>
+      <a href="https://youtu.be/2IzbH_hvOjk" target="_blank" class="start-card">
+        <div class="start-thumb">
+          <img src="https://img.youtube.com/vi/2IzbH_hvOjk/mqdefault.jpg" alt="Start Here" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.style.display='none'" />
+          <div class="start-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+          <span style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.8);color:white;font-size:0.7rem;font-weight:700;padding:2px 6px;border-radius:3px;z-index:2;">24:02</span>
+        </div>
+        <div class="start-body">
+          <p>Start here 🌱</p>
+          <h3>I'm Done Starting Over — This Time Will Be Different</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="quote-banner">
+    <blockquote>
+      "Anything is possible once you love and respect who you are." 🌿
+      <cite>— Ricardo, Richy</cite>
+    </blockquote>
+  </div>
+
+  <section class="topics-section" id="topics">
+    <div class="section-inner">
+      <p class="section-tag">What we cover</p>
+      <h2 class="section-title">Topics close to my heart</h2>
+      <p class="section-sub">Everything I make is designed to help you grow — as a person, and as part of this world.</p>
+      <div class="topics-grid">
+        <div class="topic-card"><span class="topic-icon">🧠</span><h3>Self-Development</h3><p>Level up who you are, one step at a time.</p></div>
+        <div class="topic-card"><span class="topic-icon">💛</span><h3>Self-Love</h3><p>Learn to value and show up for yourself.</p></div>
+        <div class="topic-card"><span class="topic-icon">✨</span><h3>Positivity</h3><p>Shift your mindset and energy every day.</p></div>
+        <div class="topic-card"><span class="topic-icon">🧘</span><h3>Mental Health</h3><p>Real conversations about how we feel inside.</p></div>
+        <div class="topic-card"><span class="topic-icon">🌍</span><h3>Making an Impact</h3><p>How we can make the world better together.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="section-inner">
+      <p class="section-tag">Latest videos</p>
+      <h2 class="section-title">Start watching</h2>
+      <p class="section-sub">Real, honest content every week to keep you growing and moving forward.</p>
+      <div class="videos-grid" id="videos-grid">
+
+        <a class="video-card" href="https://youtu.be/Fqb57wt4t-U" target="_blank">
+          <div class="vc-thumb" style="background:#1B4332;">
+            <img src="https://img.youtube.com/vi/Fqb57wt4t-U/mqdefault.jpg" alt="Your Life Is What You Think It Is" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Mindset</p>
+            <h3 class="vc-title">Your Life Is What You Think It Is</h3>
+            <div class="vc-meta"><span>Latest</span><span>1 day ago</span></div>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://youtu.be/5Wn0LvrZ1IU" target="_blank">
+          <div class="vc-thumb" style="background:#2D6A4F;">
+            <img src="https://img.youtube.com/vi/5Wn0LvrZ1IU/mqdefault.jpg" alt="Struggle Is What Makes Us Who We Are" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Growth</p>
+            <h3 class="vc-title">Struggle Is What Makes Us Who We Are</h3>
+            <div class="vc-meta"><span>2 days ago</span></div>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://youtu.be/1cPzIJG7oGU" target="_blank">
+          <div class="vc-thumb" style="background:#40916C;">
+            <img src="https://img.youtube.com/vi/1cPzIJG7oGU/mqdefault.jpg" alt="Life Will Never Fully Align" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Mindset</p>
+            <h3 class="vc-title">Life Will Never Fully Align</h3>
+            <div class="vc-meta"><span>21 views</span><span>3 days ago</span></div>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://youtu.be/Awtiw65USYc" target="_blank">
+          <div class="vc-thumb" style="background:#1B4332;">
+            <img src="https://img.youtube.com/vi/Awtiw65USYc/mqdefault.jpg" alt="You're Not Behind in Life" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Self-Worth</p>
+            <h3 class="vc-title">You're Not Behind in Life</h3>
+            <div class="vc-meta"><span>45 views</span><span>10 days ago</span></div>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://youtu.be/UARSqqWWwKg" target="_blank">
+          <div class="vc-thumb" style="background:#081C15;">
+            <img src="https://img.youtube.com/vi/UARSqqWWwKg/mqdefault.jpg" alt="The Problem With Nostalgia" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Mindset</p>
+            <h3 class="vc-title">The Problem With Nostalgia</h3>
+            <div class="vc-meta"><span>55 views</span><span>2 weeks ago</span></div>
+          </div>
+        </a>
+
+        <a class="video-card" href="https://youtu.be/yZGCpNRpFfA" target="_blank">
+          <div class="vc-thumb" style="background:#1a3828;">
+            <img src="https://img.youtube.com/vi/yZGCpNRpFfA/mqdefault.jpg" alt="Nothing Changes Until You Change How You Respond" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+            <div class="vc-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+            <div class="watch-now">Watch Now →</div>
+          </div>
+          <div class="vc-body">
+            <p class="vc-category">Growth</p>
+            <h3 class="vc-title">Nothing Changes Until You Change How You Respond</h3>
+            <div class="vc-meta"><span>47 views</span><span>3 weeks ago</span></div>
+          </div>
+        </a>
+
+      </div>
+      <div class="yt-btn">
+        <a href="https://www.youtube.com/@richiey" target="_blank" class="btn-primary">See all videos on YouTube →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="section-inner about-inner">
+      <div class="about-avatar">
+        <div class="avatar-circle">😊</div>
+        <div class="avatar-name">Ricardo</div>
+        <div class="avatar-title">Creator of Richy</div>
+      </div>
+      <div class="about-text">
+        <h2>Welcome to the community! 🌍🤗</h2>
+        <p>You made it here for a reason — and I'm so glad you did. You're now part of a community of people who are all on the same journey: growing, improving, and becoming the best version of themselves. You belong here.</p>
+        <p>My name is Ricardo. My dream is to make this world a better place — wayyy more positive than how it is now. I want all of us as a society to be there for one another, but especially for ourselves. And I believe we will. 🌍</p>
+        <ul class="values-list">
+          <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Growing and learning as a person</li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Spreading real positivity in the world</li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span> Being there for each other and ourselves</li>
+        </ul>
+        <a href="https://www.youtube.com/@richiey" target="_blank" class="btn-primary" style="display:inline-flex;">Subscribe and join the journey 🌱</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-section" id="community">
+    <div class="section-inner">
+      <p class="section-tag">The community space</p>
+      <h2 class="section-title">This is your space too 💬</h2>
+      <p class="section-sub">Suggest a video topic, ask Ricardo a question about life, or just get something off your chest. This community is for all of us.</p>
+
+      <div class="community-tabs">
+        <button class="tab-btn active" onclick="switchTab('suggest')">🎬 Suggest a video</button>
+        <button class="tab-btn" onclick="switchTab('question')">🙋 Ask a question</button>
+        <button class="tab-btn" onclick="switchTab('rant')">💭 Just rant it out</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-suggest">
+        <div class="community-form">
+          <label>What should Ricardo's next video be about?</label>
+          <input type="text" id="suggest-topic" placeholder="e.g. How to stop overthinking at night..." maxlength="120" oninput="updateCount('suggest-topic','suggest-count',120)" />
+          <div class="char-count"><span id="suggest-count">0</span>/120</div>
+
+          <label>Which category fits best?</label>
+          <select id="suggest-cat">
+            <option value="">Pick a category...</option>
+            <option>Mindset</option>
+            <option>Self-Love</option>
+            <option>Habits & Routines</option>
+            <option>Mental Health</option>
+            <option>Relationships</option>
+            <option>Motivation</option>
+            <option>Life Advice</option>
+            <option>Other</option>
+          </select>
+
+          <label>Anything else you want to add? (optional)</label>
+          <textarea id="suggest-detail" placeholder="Tell Ricardo why this topic matters to you..." maxlength="400" oninput="updateCount('suggest-detail','suggest-detail-count',400)"></textarea>
+          <div class="char-count"><span id="suggest-detail-count">0</span>/400</div>
+
+          <button class="submit-btn" onclick="handleSubmit('suggest')">Send suggestion 🎬</button>
+          <div class="success-msg" id="suggest-success">🎉 Thank you! Ricardo will see your suggestion. Keep growing! 🌱</div>
+          <p class="form-note">Suggestions are anonymous. Ricardo reads every single one.</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-question">
+        <div class="community-form">
+          <label>What's on your mind? Ask Ricardo anything.</label>
+          <textarea id="question-text" placeholder="e.g. How do you stay motivated when everything feels pointless?..." maxlength="500" oninput="updateCount('question-text','question-count',500)"></textarea>
+          <div class="char-count"><span id="question-count">0</span>/500</div>
+
+          <label>Your first name (optional)</label>
+          <input type="text" id="question-name" placeholder="e.g. Sofia" maxlength="40" />
+
+          <label>How urgent does this feel for you?</label>
+          <select id="question-urgency">
+            <option value="">Select...</option>
+            <option>Just curious</option>
+            <option>Been on my mind for a while</option>
+            <option>Really struggling with this</option>
+            <option>Need to hear this answered</option>
+          </select>
+
+          <button class="submit-btn" onclick="handleSubmit('question')">Send question 🙋</button>
+          <div class="success-msg" id="question-success">💛 Got it! Ricardo appreciates you opening up. You're not alone in this. 🌱</div>
+          <p class="form-note">Your question may inspire a future video. All submissions are anonymous by default.</p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-rant">
+        <div class="community-form">
+          <label>This is a safe space. Get it all out. 💭</label>
+          <textarea id="rant-text" placeholder="Don't hold back. Nobody's judging here. Write whatever's on your heart..." maxlength="1000" oninput="updateCount('rant-text','rant-count',1000)"></textarea>
+          <div class="char-count"><span id="rant-count">0</span>/1000</div>
+
+          <label>How are you feeling right now?</label>
+          <select id="rant-feeling">
+            <option value="">Select your vibe...</option>
+            <option>😤 Frustrated</option>
+            <option>😔 Sad / low</option>
+            <option>😰 Anxious / overwhelmed</option>
+            <option>😶 Numb / lost</option>
+            <option>😤 Angry</option>
+            <option>🙂 Actually okay, just needed to vent</option>
+          </select>
+
+          <button class="submit-btn" onclick="handleSubmit('rant')">Let it out 💭</button>
+          <div class="success-msg" id="rant-success">🤗 Thank you for trusting this space. You're stronger than you know. Keep going. 🌱</div>
+          <p class="form-note">This is completely anonymous. You are seen and you matter. 💛</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="newsletter-section">
+    <div class="section-inner">
+      <p class="section-tag">Join the Richy community</p>
+      <h2 class="section-title" style="color:white;">Get positivity straight to your inbox</h2>
+      <p class="section-sub">No spam. Just good energy, growth tips, and updates from Ricardo — weekly.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="your@email.com" />
+        <button type="button">I'm in! 🌱</button>
+      </div>
+      <p class="nl-note">Join the community. Unsubscribe any time.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div>
+      <div class="footer-brand">🌿 Richy — by Ricardo</div>
+      <div class="footer-copy">© 2026 Richy. Growing together. 🌍</div>
+    </div>
+    <div class="social-links">
+      <a href="https://www.youtube.com/@richiey" target="_blank" title="YouTube">YT</a>
+      <a href="https://www.twitch.tv/r1ch1y" target="_blank" title="Twitch">Tw</a>
+      <a href="https://www.instagram.com/richiericardoo" target="_blank" title="Instagram">IG</a>
+      <a href="https://www.tiktok.com/@richiericardoo" target="_blank" title="TikTok">TT</a>
+    </div>
+  </footer>
+
+  <div class="cookie-bar" id="cookieBar">
+    <p>🍪 <span>No cookies here</span> — just good vibes. This site doesn't track you or collect any data.</p>
+    <button class="cookie-dismiss" onclick="dismissCookie()">Got it 🌱</button>
+  </div>
+
+  <a href="#" class="back-to-top" id="backToTop" title="Back to top">↑</a>
+
+  <script>
+    const CHANNEL_ID = 'UCZoOw7ZB8geNWdEjf77EaBw';
+    const YT_API_KEY = 'AIzaSyCbQXdKdrEg3YPBCs-nAFA16WNsVL0FOTQ';
+    const YT_API_URL = `https://www.googleapis.com/youtube/v3/search?key=${YT_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=6&type=video`;
+    const PLAY_ICON = `<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>`;
+    const THUMB_COLORS = ['#1B4332','#2D6A4F','#40916C','#1B4332','#081C15','#1a3828'];
+
+    function timeAgo(dateStr) {
+      const diff = Math.floor((Date.now() - new Date(dateStr)) / 1000);
+      if (diff < 3600) return Math.floor(diff/60) + ' mins ago';
+      if (diff < 86400) return Math.floor(diff/3600) + ' hours ago';
+      if (diff < 604800) return Math.floor(diff/86400) + ' days ago';
+      if (diff < 2592000) return Math.floor(diff/604800) + ' weeks ago';
+      if (diff < 31536000) return Math.floor(diff/2592000) + ' months ago';
+      return Math.floor(diff/31536000) + ' years ago';
+    }
+
+    async function loadVideos() {
+      const grid = document.getElementById('videos-grid');
+      try {
+        const res = await fetch(YT_API_URL);
+        if (!res.ok) throw new Error('API request failed: ' + res.status);
+        const data = await res.json();
+
+        if (!data.items || !data.items.length) throw new Error('No videos found');
+
+        const videos = data.items.map(item => ({
+          videoId: item.id.videoId,
+          title: item.snippet.title,
+          link: `https://youtu.be/${item.id.videoId}`,
+          pubDate: item.snippet.publishedAt,
+          thumb: item.snippet.thumbnails.medium ? item.snippet.thumbnails.medium.url : `https://img.youtube.com/vi/${item.id.videoId}/mqdefault.jpg`
+        }));
+
+        grid.innerHTML = '';
+
+        videos.forEach((video, i) => {
+          const color = THUMB_COLORS[i % THUMB_COLORS.length];
+          const ago = timeAgo(video.pubDate);
+
+          const card = document.createElement('a');
+          card.className = 'video-card';
+          card.href = video.link;
+          card.target = '_blank';
+          card.innerHTML = `
+            <div class="vc-thumb" style="background:${color};">
+              <img src="${video.thumb}" alt="${video.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+              <div class="vc-play">${PLAY_ICON}</div>
+              <div class="watch-now">Watch Now →</div>
+            </div>
+            <div class="vc-body">
+              <p class="vc-category">Richy</p>
+              <h3 class="vc-title">${video.title}</h3>
+              <div class="vc-meta"><span>${ago}</span></div>
+            </div>`;
+          grid.appendChild(card);
+        });
+
+        const countEl = document.getElementById('video-count');
+        if (countEl) countEl.textContent = videos.length + '+';
+
+        const latest = videos[0];
+        const heroTitle = document.getElementById('hero-title');
+        const heroMeta = document.getElementById('hero-meta');
+        const heroThumb = document.getElementById('hero-thumb');
+        const heroImg = document.getElementById('hero-thumb-img');
+        if (heroTitle) heroTitle.textContent = latest.title;
+        if (heroMeta) heroMeta.textContent = 'Latest · ' + timeAgo(latest.pubDate);
+        if (heroThumb) heroThumb.onclick = () => window.open(latest.link, '_blank');
+        if (heroImg) heroImg.src = latest.thumb;
+
+        console.log('YouTube videos loaded successfully via Data API:', videos.length);
+
+      } catch(e) {
+        console.log('YouTube API failed, using fallback videos:', e.message);
+      }
+    }
+
+    loadVideos();
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tab).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    function updateCount(inputId, countId, max) {
+      const el = document.getElementById(inputId);
+      const count = document.getElementById(countId);
+      if (el && count) count.textContent = el.value.length;
+    }
+
+    const FORMSPREE = 'https://formspree.io/f/mgoqpvbn';
+
+    async function handleSubmit(type) {
+      const btn = event.target;
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+
+      let data = { _type: type };
+
+      if (type === 'suggest') {
+        data.topic = document.getElementById('suggest-topic').value;
+        data.category = document.getElementById('suggest-cat').value;
+        data.details = document.getElementById('suggest-detail').value;
+        if (!data.topic) { showError(btn, type, 'Please enter a topic idea!'); return; }
+      } else if (type === 'question') {
+        data.question = document.getElementById('question-text').value;
+        data.name = document.getElementById('question-name').value || 'Anonymous';
+        data.urgency = document.getElementById('question-urgency').value;
+        if (!data.question) { showError(btn, type, 'Please write your question!'); return; }
+      } else if (type === 'rant') {
+        data.rant = document.getElementById('rant-text').value;
+        data.feeling = document.getElementById('rant-feeling').value;
+        if (!data.rant) { showError(btn, type, 'Go ahead, write it out!'); return; }
+      }
+
+      try {
+        const res = await fetch(FORMSPREE, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        if (res.ok) {
+          const successEl = document.getElementById(type + '-success');
+          if (successEl) {
+            successEl.style.display = 'block';
+            setTimeout(() => { successEl.style.display = 'none'; }, 6000);
+          }
+          document.querySelectorAll('#tab-' + type + ' input, #tab-' + type + ' textarea, #tab-' + type + ' select').forEach(el => { el.value = ''; });
+          document.querySelectorAll('#tab-' + type + ' .char-count span').forEach(el => el.textContent = '0');
+          const labels = { suggest: 'Send suggestion 🎬', question: 'Send question 🙋', rant: 'Let it out 💭' };
+          btn.textContent = labels[type];
+          btn.disabled = false;
+        } else {
+          showError(btn, type, 'Something went wrong. Try again!');
+        }
+      } catch(e) {
+        showError(btn, type, 'Network error. Check your connection!');
+      }
+    }
+
+    function showError(btn, type, msg) {
+      const labels = { suggest: 'Send suggestion 🎬', question: 'Send question 🙋', rant: 'Let it out 💭' };
+      btn.textContent = msg;
+      btn.style.background = '#e05a5a';
+      btn.disabled = false;
+      setTimeout(() => {
+        btn.textContent = labels[type];
+        btn.style.background = '';
+      }, 3000);
+    }
+
+    window.addEventListener('load', () => document.body.classList.add('loaded'));
+
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) backBtn.classList.add('visible');
+      else backBtn.classList.remove('visible');
+    });
+
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('nav-active');
+            if (link.getAttribute('href') === '#' + entry.target.id) link.classList.add('nav-active');
+          });
+        }
+      });
+    }, { threshold: 0.35 });
+    sections.forEach(s => observer.observe(s));
+
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      document.getElementById('darkBtn').textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('darkMode', isDark);
+    }
+    if (localStorage.getItem('darkMode') === 'true') {
+      document.body.classList.add('dark');
+      document.getElementById('darkBtn').textContent = '☀️';
+    }
+
+    function launchConfetti() {
+      const colors = ['#FF9A3C','#2D6A4F','#D8F3DC','#FF6B6B','#C96F10','#74C69D','#ffffff'];
+      for (let i = 0; i < 80; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti-piece';
+        piece.style.cssText = `left:${Math.random()*100}vw;top:-10px;background:${colors[Math.floor(Math.random()*colors.length)]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>0.5?'50%':'2px'};animation-duration:${1.5+Math.random()*2}s;animation-delay:${Math.random()*0.5}s;`;
+        document.body.appendChild(piece);
+        piece.addEventListener('animationend', () => piece.remove());
+      }
+    }
+    document.querySelectorAll('.nav-cta, .btn-primary').forEach(btn => {
+      if (btn.href && btn.href.includes('youtube')) btn.addEventListener('click', launchConfetti);
+    });
+
+    window.addEventListener('load', () => {
+      if (!localStorage.getItem('cookieDismissed')) {
+        setTimeout(() => document.getElementById('cookieBar').classList.add('visible'), 1500);
+      }
+    });
+    function dismissCookie() {
+      document.getElementById('cookieBar').classList.remove('visible');
+      localStorage.setItem('cookieDismissed', 'true');
+    }
+  </script>
+
+</body>
+</html>
